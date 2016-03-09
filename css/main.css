@@ -1,0 +1,19 @@
+
+.array-table {
+	border: 1px solid #a2a2a2;
+}
+
+/*.array-table .coordinates {*/
+	/*color: #2fc2f9;*/
+/*}*/
+
+.array-table tr {
+	height: 20px;
+}
+
+.array-table tr td,
+.array-table tr th {
+	width: 20px;
+	height : 20px;
+	border: 1px solid #dce9ff;
+}
