@@ -44,9 +44,9 @@
 		selectCell: function (event) {
 			var activeCellId = event.target.id || event.srcElement.id;
 			this.removeCellsHighlighting();
-			this.highlightActiveCell(activeCellId);
 			this.findNeighborsAlgorithm.cleanNeighborsArray();
-			var neighborCells = this.findNeighborsAlgorithm.findNeighbors(this.generatedArray, activeCellId);
+			this.highlightActiveCell(activeCellId);
+			var neighborCells = this.findNeighborsAlgorithm.findNeighbors(activeCellId);
 			this.highlightNeighbours(neighborCells);
 		},
 
@@ -71,7 +71,9 @@
 			for (var i = 0; i < cellsArray.length; i++) {
 				var id = cellsArray[i].id;
 				var cell = cells[id];
-				cell.classList.add('activeCellNeighbor');
+				if (!cell.classList.contains('activeCell')){
+					cell.classList.add('activeCellNeighbor');
+				}
 			}
 		},
 
@@ -86,11 +88,12 @@
 		},
 
 		generateArray: function () {
-			var generatedArray = [];
+			var array = [];
 			var min = 0;
 			var max = 9;
 			var cellId = 0;
 
+			this.removeCellsHighlighting();
 			this.generatedArray = [];
 			for (var i = 0; i < 7; i++) {
 				for (var j = 0; j < 7; j++) {
@@ -101,10 +104,11 @@
 						rowIndex: i,
 						id: cellId++
 					};
-					generatedArray.push(cell);
+					array.push(cell);
 				}
 			}
-			this.generatedArray = generatedArray;
+			this.generatedArray = array;
+			this.findNeighborsAlgorithm.updateGeneratedArray(this.generatedArray);
 			this.showGeneratedValues();
 		}
 	};
