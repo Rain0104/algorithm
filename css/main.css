@@ -11,9 +11,19 @@
 	height: 20px;
 }
 
-.array-table tr td,
-.array-table tr th {
+.array-table tr td{
 	width: 20px;
 	height : 20px;
 	border: 1px solid #dce9ff;
+}
+.array-table tr td:hover {
+background: #daffcc;
+}
+
+.array-table tr td.activeCell {
+	background: #97ff58;
+}
+
+.array-table tr td.activeCellNeighbor {
+	background: #f4ff81;
 }
